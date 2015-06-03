@@ -1,0 +1,77 @@
+<div class="container">
+
+  <div ng-include="'app/components/navbar/navbar.html'"></div>
+
+  <div ng-if="!record">
+  	Loading...
+  </div>
+
+  <div ng-if="record">
+
+		<div class="ui breadcrumb">
+		  <a ui-sref="home">Home</a>
+		  <i class="right chevron icon divider"></i>
+		  <div class="active section">{{record.title}}</div>
+		</div>
+
+		<div class="ui divider"></div>
+
+	  <div class="ui grid">
+	  	<div class="four wide column">
+			<img class="ui image rounded" ng-src="{{record.featured_image.source}}">
+		</div>
+		<div class="four wide column">
+			<h1>{{record.title}}</h1>
+			<p class="meta">{{record.acf.organisation}} <i class="check circle icon orange" ng-if="record.acf.organisation_verified"><small style="text-transform: uppercase; padding-left: 2px;">Verified</small></i></p>
+			<div ng-bind-html="record.excerpt"></div>
+			<p></p>
+			<div class="ui buttons">
+			  <a href="{{record.acf.github_url}}" class="ui button"><i class="github icon"></i> GitHub</a>
+			  <div class="or"></div>
+			  <a href="{{record.acf.demo_url}}" class="ui positive button">Give it a go</a>
+			</div>
+		</div>
+		<div class="eight wide column">
+			<div class="ui center aligned segment">
+			<h2>Votes</h2>
+				<div class="center aligned column">
+					<i class="thumbs up icon huge green"></i> 
+					<span class="text huge">{{record.acf.upvotes}}</span>
+				</div>
+				<div class="center aligned column">
+					<i class="thumbs down icon large red"></i> 
+					<span class="text large">{{record.acf.downvotes}}</span>
+				</div>
+			</div>
+		</div>
+	  </div>
+
+	  <div class="ui divider"></div>
+
+	  <div class="ui grid">
+	  	<div class="eight wide column">
+	  		<div class="ui segment">
+	  			<div ng-bind-html="record.content"></div>
+	  		</div>
+	  	</div>
+
+	  	<div class="eight wide column">
+	  		<div class="ui segment">
+	  			<div ng-bind-html="trustAsURL(record.acf.screenshots)"></div>
+	  		</div>
+	  	</div>
+	  </div>
+
+	</div>
+
+	<div class="ui divider"></div>
+
+  <div class="ui grid">
+    <div class="sixteen wide column">
+      <div class="footer">
+        <p>With ♥ from The Sunday Times</p>
+      </div>
+    </div>
+  </div>
+
+</div>
