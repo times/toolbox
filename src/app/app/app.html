@@ -8,15 +8,19 @@
 
   <div ng-if="record">
 
-		<div class="ui breadcrumb">
-		  <a ui-sref="home">Home</a>
-		  <i class="right chevron icon divider"></i>
-		  <div class="active section">{{record.title}}</div>
+		<div class="ui page grid">
+			<div class="sixteen wide column">
+				<div class="ui breadcrumb">
+				  <a ui-sref="home">Home</a>
+				  <i class="right chevron icon divider"></i>
+				  <div class="active section">{{record.title}}</div>
+				</div>
+
+				<div class="ui divider"></div>
+			</div>
 		</div>
 
-		<div class="ui divider"></div>
-
-	  <div class="ui grid">
+	  <div class="ui page grid">
 	  	<div class="four wide column">
 			<img class="ui image rounded" ng-src="{{record.featured_image.source}}">
 		</div>
@@ -48,7 +52,7 @@
 
 	  <div class="ui divider"></div>
 
-	  <div class="ui grid">
+	  <div class="ui page grid">
 	  	<div class="eight wide column">
 	  		<div class="ui segment">
 	  			<div ng-bind-html="record.content"></div>
@@ -66,7 +70,7 @@
 
 	<div class="ui divider"></div>
 
-  <div class="ui grid">
+  <div class="ui page grid">
     <div class="sixteen wide column">
       <div class="footer">
         <p>With ♥ from The Sunday Times</p>

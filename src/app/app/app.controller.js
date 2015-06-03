@@ -11,7 +11,7 @@ class AppCtrl {
 
     $scope.trustAsURL = function(data) {
       return $sce.trustAs('html', data);
-    }
+    };
   } 
 }
 

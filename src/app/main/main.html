@@ -2,14 +2,14 @@
 
   <div ng-include="'app/components/navbar/navbar.html'"></div>
 
-  <div class="ui centered grid">
+  <div class="ui page centered grid">
     <div class="eight wide column center">
       <img src="http://placehold.it/600x250">
     </div>
   </div>
 
   <div ng-controller="SearchCtrl">
-    <form class="ui grid" ng-submit="search()">
+    <form class="ui page grid" ng-submit="search()">
         <div class="sixteen wide column">
           <div class="ui fluid input massive">
             <input type="text" ng-model="term" placeholder="What are you looking to create...?">
@@ -24,13 +24,13 @@
         </div>
     </form>
 
-    <div class="ui grid" ng-if="loading">
+    <div class="ui page grid" ng-if="loading">
       <div class="sixteen wide column">
         Loading...
       </div>
     </div>
 
-    <div class="ui grid">
+    <div class="ui page grid">
       <div class="sixteen wide column">
         <div class="ui cards" ng-if="records">
           <div class="card" ng-repeat="record in records">
@@ -38,9 +38,13 @@
               <img ng-src="{{record.featured_image.source}}">
             </a>    
             <div class="content">
-              <div class="ui floated right">
+              <div class="ui floated right" ng-if="higherUpvotes(record.acf.upvotes, record.acf.downvotes)">
                 <i class="thumbs up icon green"></i> 
                 <span class="text">{{record.acf.upvotes}}</span>
+              </div>
+              <div class="ui floated right" ng-if="higherDownvotes(record.acf.upvotes, record.acf.downvotes)">
+                <i class="thumbs down icon red"></i> 
+                <span class="text">{{record.acf.downvotes}}</span>
               </div>
               <a ui-sref="app({id: record.ID})">
                 <div class="header"><h3>{{record.title}}</h3></div>
@@ -67,7 +71,7 @@
 
   <div class="ui divider"></div>
 
-  <div class="ui grid">
+  <div class="ui page grid">
     <div class="sixteen wide column">
       <h1>Explore all tools</h1>
     </div>
@@ -79,7 +83,7 @@
     </div>
   </div>
 
-  <div class="ui grid">
+  <div class="ui page grid">
     <div class="sixteen wide column">
       <div class="footer">
         <p>With ♥ from The Sunday Times</p>

@@ -27,6 +27,22 @@ class SearchCtrl {
 		    $scope.loading = false;
 	    });
    	};
+
+   	$scope.higherDownvotes = function(upvotes, downvotes) {
+   		if(parseInt(upvotes) < parseInt(downvotes)) {
+   			return true;
+   		}
+
+   		return false;
+   	};
+
+   	$scope.higherUpvotes = function(upvotes, downvotes) {
+   		if(parseInt(upvotes) >= parseInt(downvotes)) {
+   			return true;
+   		}
+
+   		return false;
+   	};
   }
 }
 
