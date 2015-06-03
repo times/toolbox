@@ -11,8 +11,9 @@
   <div ng-controller="SearchCtrl">
     <form class="ui page grid" ng-submit="search()">
         <div class="sixteen wide column">
-          <div class="ui fluid input massive">
+          <div class="ui fluid icon input massive" ng-class="{'loading': loading}">
             <input type="text" ng-model="term" placeholder="What are you looking to create...?">
+            <i class="search icon"></i>
           </div>
         </div>
 
@@ -23,12 +24,6 @@
           </div>
         </div>
     </form>
-
-    <div class="ui page grid" ng-if="loading">
-      <div class="sixteen wide column">
-        Loading...
-      </div>
-    </div>
 
     <div class="ui page grid">
       <div class="sixteen wide column">
@@ -55,6 +50,10 @@
               <div class="ui divider"></div>
               <div ng-bind-html="record.excerpt"></div>
             </div>
+            <a ui-sref="app({id: record.ID})" class="ui bottom attached button primary">
+              <i class="eye icon"></i>
+              View tool
+            </a>
           </div>
         </div>
 

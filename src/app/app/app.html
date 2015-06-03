@@ -25,7 +25,16 @@
 			<img class="ui image rounded" ng-src="{{record.featured_image.source}}">
 		</div>
 		<div class="four wide column">
-			<h1>{{record.title}}</h1>
+			<h1>{{record.title}}
+	    	
+			<div class="ui animated button mini yellow" ng-click="save(record.ID)">
+			  <div class="visible content" ng-if="!isSaved(record.ID)">Saved</div>
+			  <div class="visible content" ng-if="isSaved(record.ID)">Save</div>
+			  <div class="hidden content">
+			    <i class="right star icon"></i>
+			  </div>
+			</div></h1>
+
 			<p class="meta">{{record.acf.organisation}} <i class="check circle icon orange" ng-if="record.acf.organisation_verified"><small style="text-transform: uppercase; padding-left: 2px;">Verified</small></i></p>
 			<div ng-bind-html="record.excerpt"></div>
 			<p></p>
