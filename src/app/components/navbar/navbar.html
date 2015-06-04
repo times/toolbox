@@ -1,9 +1,15 @@
 <div class="ui fixed green inverted main menu" ng-controller="NavbarCtrl">
   <div class="text item bold">
-  	Journalist Toolkit
+  	<img src="assets/images/thebriefcase.png" style="max-width: 23px; vertical-align: -3px; margin-right: 2px;"> <span style="font-family: 'Roboto Slab'; font-weight: 100; text-transform: uppercase; color: #FFFFFF; letter-spacing: 2px;">Journalist</span> <span style="font-family: 'Roboto Slab'; font-weight: 700; text-transform: uppercase; color: #FFFFFF; letter-spacing: 3px;">Toolbox</span>
   </div>
-  <a ng-click="home()" class="active item">
+  <a ng-click="home()" ui-sref="home" ui-sref-active="active" class="item">
     <i class="home icon"></i> Home
+  </a>
+  <a ui-sref="create" ui-sref-active="active" class="item">
+    <i class="puzzle icon"></i> Create
+  </a>
+  <a ui-sref="request" ui-sref-active="active" class="item">
+    <i class="spy icon"></i> Request
   </a>
   <div class="text item right">
   	Welcome back, {{user.forename}}

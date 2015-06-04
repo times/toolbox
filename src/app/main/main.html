@@ -2,9 +2,9 @@
 
   <div ng-include="'app/components/navbar/navbar.html'"></div>
 
-  <div class="ui page centered grid">
+  <div class="ui page centered grid stackable">
     <div class="eight wide column center">
-      <img src="http://placehold.it/600x250">
+      <img src="assets/images/logo.png" style="width: 100%; margin: 20px auto; display: block; max-width: 400px; ">
     </div>
   </div>
 
@@ -13,22 +13,37 @@
         <div class="sixteen wide column">
           <div class="ui fluid icon input massive" ng-class="{'loading': loading}">
             <input type="text" ng-model="term" placeholder="What are you looking to create...?">
-            <i class="search icon"></i>
-          </div>
-        </div>
-
-        <div class="sixteen wide column">
-          <div class="ui fluid icon button primary" ng-click="search()">
-            Find tools
-            <i class="search icon"></i>
+            <i class="search icon" ng-click="search()"></i>
           </div>
         </div>
     </form>
 
-    <div class="ui page grid">
-      <div class="sixteen wide column">
-        <div class="ui cards" ng-if="records">
-          <div class="card" ng-repeat="record in records">
+    <div class="ui page grid stackable" ng-if="records">
+
+      <div class="four wide column">
+        <div class="ui fluid icon input">
+          <input type="text" ng-model="filters.acf.documentation_languages" placeholder="Documentation languages...">
+          <i class="search icon"></i>
+        </div>
+      </div>
+      <div class="three wide column">
+        <div class="ui toggle checkbox" style="margin-bottom: 5px;">
+          <input type="checkbox" ng-model="verified" ng-change="verifiedTick()" name="verified" id="verified">
+          <label for="verified">Verified</label>
+        </div>
+        <div class="ui toggle checkbox">
+          <input type="checkbox" ng-model="demo" ng-change="demoTick()" name="demo" id="demo">
+          <label for="demo">Demo</label>
+        </div>
+      </div>
+      <div class="two wide column">
+        
+      </div>
+      <div class="four wide column"></div>
+
+      <div class="four wide column" ng-repeat="record in records | filter : filters">
+        <div class="ui cards">
+          <div class="card" style="margin-left: auto; margin-right: auto;">
             <a ui-sref="app({id: record.ID})" class="image">
               <img ng-src="{{record.featured_image.source}}">
             </a>    
@@ -56,8 +71,35 @@
             </a>
           </div>
         </div>
+      </div>
 
-        <div class="ui negative message" ng-if="error">
+      <div class="four wide column">
+        <div class="ui cards">
+          <div class="card">
+            <a ui-sref="request({term: term})" class="image">
+              <img src="http://placehold.it/400x400">
+            </a>    
+            <div class="content">
+              <a ui-sref="request({term: term})">
+                <div class="header"><h3>Didn't find what you wanted?</h3></div>
+              </a>
+              <div class="ui divider"></div>
+              <div>
+                <p>Sorry! Why not file a request for this tool?</p>
+              </div>
+            </div>
+            <a ui-sref="request({term: term})" class="ui bottom attached button green">
+              <i class="spy icon"></i>
+              Request tool
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui page grid" ng-if="error">
+      <div class="sixteen wide column">
+        <div class="ui negative message">
           <i class="close icon"></i>
           <div class="header">
             {{error}}
@@ -66,19 +108,28 @@
         </div>
       </div>
     </div>
+
   </div>
 
-  <div class="ui divider"></div>
+  <div class="ui page grid stackable">
+    <div class="sixteen wide column">
+      <div class="ui divider"></div>
+    </div>
+  </div>
 
-  <div class="ui page grid">
+  <div class="ui page grid stackable">
     <div class="sixteen wide column">
       <h1>Explore all tools</h1>
     </div>
     <div class="four wide column center aligned" ng-repeat="category in categories">
-      <div class="ui segment">
-        <img class="ui circular image centered" src="{{category.image}}">
-        <h2>{{category.name}}</h2>
-      </div>
+      <a ui-sref="explore({category: category.link})" style="color: #222222;">
+        <div class="ui segment {{category.color}}">
+          <h1 class="ui header">
+            <i class="{{category.icon}} icon" style="margin-right: 0; font-size: 2.5em;"></i>
+          </h1>
+          <h2>{{category.name}}</h2>
+        </div>
+      </a>
     </div>
   </div>
 

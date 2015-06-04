@@ -2,6 +2,26 @@
 
 class SearchCtrl {
   constructor ($scope, WordPress) {
+  	$scope.filters = {
+  		acf: {}
+  	};
+
+    $scope.verifiedTick = function() {
+    	if($scope.filters.acf.organisation_verified) {
+    		delete $scope.filters.acf.organisation_verified;
+    	} else {
+    		$scope.filters.acf.organisation_verified = true;
+    	}
+    };
+
+    $scope.demoTick = function() {
+    	if($scope.filters.acf.has_demo) {
+    		delete $scope.filters.acf.has_demo;
+    	} else {
+    		$scope.filters.acf.has_demo = true;
+    	}
+    };
+
    	$scope.term = null;
    	$scope.documentationLanguage = null;
    	$scope.demo = null;
