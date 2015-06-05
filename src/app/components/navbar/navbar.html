@@ -5,17 +5,20 @@
   <a ng-click="home()" ui-sref="home" ui-sref-active="active" class="item">
     <i class="home icon"></i> Home
   </a>
-  <a ui-sref="create" ui-sref-active="active" class="item">
+  <a ui-sref="interested" ui-sref-active="active" class="item">
+    <i class="question icon"></i> Interested?
+  </a>
+  <a ui-sref="create" ui-sref-active="active" class="item" ng-click="missingPage();">
     <i class="puzzle icon"></i> Create
   </a>
-  <a ui-sref="request" ui-sref-active="active" class="item">
+  <a ui-sref="request" ui-sref-active="active" class="item" ng-click="missingPage();">
     <i class="spy icon"></i> Request
   </a>
   <a href="http://www.github.com/times/toolbox" class="item right">
     <i class="github icon"></i> Code on GitHub
   </a>
   <div class="text item right">
-  	Welcome back, {{user.forename}}
+  	Welcome back
   </div>
 </div>
 

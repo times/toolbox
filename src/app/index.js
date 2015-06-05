@@ -5,11 +5,13 @@ import AppCtrl from '../app/app/app.controller';
 import WordPress from '../app/services/wordpress/wordpress.service';
 import NavbarCtrl from '../app/components/navbar/navbar.controller';
 import SearchCtrl from '../app/components/search/search.controller';
+import InterestedCtrl from '../app/interested/interested.controller';
 
-angular.module('toolkit', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'ui.select2', 'LocalStorageModule'])
+angular.module('toolkit', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'ui.select2', 'LocalStorageModule', 'angulartics', 'angulartics.google.analytics'])
   .controller('MainCtrl', MainCtrl)
   .controller('NavbarCtrl', NavbarCtrl)
   .controller('SearchCtrl', SearchCtrl)
+  .controller('InterestedCtrl', InterestedCtrl)
   .controller('AppCtrl', AppCtrl)
   .service('WordPressProvider', WordPress)
 
@@ -42,6 +44,11 @@ angular.module('toolkit', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'u
         url: '/create',
         templateUrl: 'app/create/create.html',
         controller: 'CreateCtrl'
+      })
+      .state('interested', {
+        url: '/interested',
+        templateUrl: 'app/interested/interested.html',
+        controller: 'InterestedCtrl'
       });
 
     $urlRouterProvider.otherwise('/');
